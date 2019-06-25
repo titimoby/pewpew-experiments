@@ -1,3 +1,6 @@
+"""
+CircuitPython code by Thierry Chantier
+"""
 import pew
 import random
 
@@ -58,14 +61,14 @@ blinkImg = [
 ]
 
 
-def fill_rect(image, x, y, wx, wy):
+def fill_rect(source_image, x, y, wx, wy):
     x = int(x)
     y = int(y)
     wx = int(wx)
     wy = int(wy)
-    for row in range(y, y + wy):
-        for column in range(x, x + wx):
-            image[row][column] = 0
+    for index_y in range(y, y + wy):
+        for index_x in range(x, x + wx):
+            source_image[index_y][index_x] = 0
 
 
 screen = pew.Pix()
@@ -102,9 +105,9 @@ while loop:
     if gazeCountdown <= gazeFrames:
         # Eyes are in motion - draw pupil at interim position
         fill_rect(image,
-                 newX - (dX * gazeCountdown / gazeFrames),
-                 newY - (dY * gazeCountdown / gazeFrames),
-                 2, 2)
+                  newX - (dX * gazeCountdown / gazeFrames),
+                  newY - (dY * gazeCountdown / gazeFrames),
+                  2, 2)
         if gazeCountdown == 0:  # Last frame?
             eyeX = newX
             eyeY = newY  # Yes.What's new is old, then...
@@ -112,7 +115,8 @@ while loop:
             newY = random.randrange(7)
             dX = newX - 3
             dY = newY - 3
-            while dX * dX + dY * dY >= 10:  # Pick random positions until one is within the eye circle. Thank you Pythagoras
+            # Pick random positions until one is within the eye circle. Thank you Pythagoras
+            while dX * dX + dY * dY >= 10:
                 newX = random.randrange(7)
                 newY = random.randrange(7)
                 dX = newX - 3

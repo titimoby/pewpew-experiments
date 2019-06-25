@@ -1,3 +1,6 @@
+"""
+CircuitPython code by Thierry Chantier
+"""
 import pew
 
 left = [
@@ -39,4 +42,4 @@ while loop:
     elif keys & pew.K_X:
         loop = False
 
-    pew.tick(1/12)
+    pew.tick(1 / 12)

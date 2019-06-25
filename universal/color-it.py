@@ -1,6 +1,6 @@
-'''
+"""
 CircuitPython code by Thierry Chantier
-'''
+"""
 import pew
 from time import sleep
 
@@ -19,11 +19,11 @@ while True:
         pen_x = pen_x + 1
     elif keys & pew.K_DOWN and pen_y < 7:
         pen_y = pen_y + 1
-    
+
     if keys & pew.K_O:
         # french keyboard Z
         pen_color = pen_color + 1 if pen_color < 3 else 0
-    
+
     if keys & pew.K_X:
         # french keyboard X
         screen.pixel(pen_x, pen_y, pen_color)
@@ -32,4 +32,4 @@ while True:
         sleep(0.5)
 
     pew.show(screen)
-    pew.tick(1/12)
+    pew.tick(1 / 12)
